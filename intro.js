@@ -52,7 +52,7 @@ function flyAway() {
     if (t < 1) {
       requestAnimationFrame(animate);
     } else {
-      window.location.href = "index.html";
+      window.location.href = "home.html";
     }
   }
 
