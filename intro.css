@@ -1,0 +1,64 @@
+/* 背景全屏 */
+body, html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.intro-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('assets/space.png') no-repeat center center/cover;
+  z-index: -1;
+}
+
+/* 乌龟 */
+#turtle {
+  position: absolute;
+  left: 50%;
+  top: 70%;
+  width: 300px;
+  transform: translate(-50%, -50%) scale(1);
+  cursor: pointer;
+  z-index: 1; /* 乌龟层 */
+}
+
+/* UFO */
+#ufo {
+  position: absolute;
+  top: 50%;   /* 调整上下位置 */
+  left: 50%;
+  width: 700px;
+  transform: translate(-50%, -50%) rotate(0deg);
+  z-index: 2; /* 高于乌龟 */
+  
+  /* 漂浮 + 旋转 + 呼吸闪光 */
+  animation: 
+    ufoFloat 3s ease-in-out infinite alternate,
+    ufoRotate 10s linear infinite,
+    ufoGlow 2s ease-in-out infinite alternate;
+}
+
+/* 上下轻微漂浮 */
+@keyframes ufoFloat {
+  0%   { transform: translate(-50%, -50%) translateY(0px) rotate(0deg); }
+  100% { transform: translate(-50%, -50%) translateY(15px) rotate(0deg); }
+}
+
+/* 缓慢旋转 */
+@keyframes ufoRotate {
+  0%   { transform: translate(-50%, -50%) rotate(0deg); }
+  100% { transform: translate(-50%, -50%) rotate(10deg); }
+}
+
+/* 发光闪烁 */
+@keyframes ufoGlow {
+  0%   { filter: drop-shadow(0 0 5px #0ff); }
+  50%  { filter: drop-shadow(0 0 15px #0ff); }
+  100% { filter: drop-shadow(0 0 5px #0ff); }
+}

@@ -1,0 +1,446 @@
+/* ===== Global Reset & Base ===== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  margin: 0;
+  font-family: "Courier New", monospace;
+  background-color: rgba(0, 0, 0, 0.581); /* 透明背景 */
+  color: rgba(0,0,0,0.3);
+  text-align: center;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* ===== Background ===== */
+.big-heart {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 1.00;   /* 调整透明度 */
+  z-index: -999;   /* 确保最底层 */
+  pointer-events: none;
+}
+
+/* ===== Header ===== */
+header {
+  background-color: #5ad0baa7;
+  backdrop-filter: blur(5px);
+  padding: 20px;
+  position: relative;
+}
+
+.header-socials {
+  display: flex;
+  justify-content: flex-start; /* 改成靠左对齐 */
+  gap: 10px;                   /* 图标之间间距，可以调小点 */
+  margin-bottom: 10px;
+  margin-left: 20px;           /* 整组往右缩进一点 */
+}
+
+.header-socials img {
+  width: 20px;   /* 改小：原来 28px → 20px */
+  height: 20px;
+  transition: transform 0.2s ease;
+}
+
+.header-socials img:hover {
+  transform: scale(1.2);
+}
+
+.logo-wrapper {
+  display: flex;
+  height: 80px;   /* 控制 logo 高度，可以调大一点 */
+  width: auto;  
+  justify-content: center; /* 水平居中 */
+  align-items: center;     /* 垂直居中（如果有高度） */
+  margin: 20px 0;          /* 上下留点空白 */
+}
+
+.logo-wrapper img {
+  max-width: 100%;    /* 不要被拉伸超出屏幕 */
+  height: auto;       /* 保持比例，不压缩 */
+  width: 320px;       /* 让它更大（你可以改成 350px/400px） */
+}
+
+nav {
+  margin: 15px 0;
+}
+
+nav a {
+  margin: 0 15px;
+  font-weight: bold;
+  color: #f1f1f1;
+  transition: color 0.2s;
+}
+
+nav a:hover {
+  color: #ffcc00;
+}
+
+.header-subblock {
+  font-size: 0.9em;
+  font-style: italic;
+  color: #ffcc00;
+}
+
+/* ===== Lyrics Card (Lyrics Page) ===== */
+.lyrics-card {
+  background: #ffb575c9;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  padding: 25px;
+  margin: 25px auto;
+  max-width: 700px;
+  text-align: center;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  color: #2d160b;
+  border-radius: 15px;
+}
+
+.lyrics-card h2 {
+  color: #006d6d;
+  margin-bottom: 10px;
+}
+
+.lyrics-card p {
+  line-height: 1.6;
+  font-size: 0.95em;
+}
+
+/* 虚线分割线 */
+.hr-dashed {
+  border: none;
+  border-top: 1px dashed #aaa;
+  margin: 10px 0 20px;
+}
+
+/* Booklet Note */
+.booklet-note {
+  font-size: 0.8em;
+  color: #777;
+  margin: 25px auto;
+}
+
+/* ===== Newsletter ===== */
+.subscribe-section {
+  max-width: 500px;
+  margin: 30px auto;
+  text-align: center;
+}
+
+.subscribe-section h2 {
+  color: #006d6d;
+  font-size: 1.5em;
+  margin-bottom: 15px;
+}
+
+.subscribe-section iframe {
+  width: 100%;
+  max-width: 480px;
+  height: 320px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  background-color: rgba(255,255,255,0.9);
+}
+
+/* ===== Artist Bio (About Page) ===== */
+.artist-bio {
+  max-width: 700px;
+  margin: 40px auto;
+  font-size: 1.1em;
+  padding: 0 20px;
+}
+
+/* ===== Streaming Links (Shared) ===== */
+.streaming-links {
+  margin: 20px auto;
+  max-width: 700px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  font-weight: bold;
+  font-size: 1.1em;
+}
+
+.streaming-links a {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: #2d160b;
+  text-decoration: none;
+}
+
+.streaming-links a:hover {
+  text-decoration: underline;
+}
+
+.streaming-links img {
+  width: 22px;
+  height: 22px;
+  filter: brightness(90%);
+  transition: all 0.2s ease;
+}
+
+.streaming-links a:hover img {
+  filter: brightness(130%);
+  transform: scale(1.1);
+}
+
+/* ===== Album Flip Cards (Music Page) ===== */
+.album-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+  padding: 40px 20px;
+}
+
+.flip-album {
+  perspective: 1000px;
+  width: 300px;
+  height: 300px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.flip-album:hover {
+  transform: translateY(-10px) rotateX(3deg) rotateY(2deg);
+}
+
+.flip-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+  cursor: pointer;
+  border-radius: 15px;
+
+}
+
+.flip-inner.flipped {
+  transform: rotateY(180deg);
+}
+
+.flip-front, .flip-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  overflow: hidden;
+  background-color: #ffb575c9;
+  backdrop-filter: blur(6px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0px;
+  border-radius: 15px;
+}
+
+.flip-front img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 15px; 
+
+}
+
+.flip-back {
+  transform: rotateY(180deg);
+  font-size: 0.95em;
+  border-radius: 15px; 
+
+}
+
+.flip-back a {
+  color: #006d6d;
+  text-decoration: none;
+}
+
+.flip-back a:hover {
+  text-decoration: underline;
+}
+
+/* ===== Film Poster Flip Cards ===== */
+.film-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 40px;              /* 卡片间距 */
+  padding: 50px 20px;
+}
+
+/* 单张电影卡片容器（带透视） */
+.flip-film {
+  perspective: 1000px;
+  width: 260px;
+  height: 390px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* 悬浮时浮起效果 */
+.flip-film:hover {
+  transform: translateY(-10px) rotateX(3deg) rotateY(2deg);
+}
+
+/* 翻转内部结构 */
+.flip-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.8s ease;
+  transform-style: preserve-3d;
+  cursor: pointer;
+}
+
+.flip-inner.flipped {
+  transform: rotateY(180deg);
+}
+
+/* 前后通用样式 */
+.flip-front, .flip-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  overflow: hidden;
+  background-color: #ffb575c9;
+  backdrop-filter: blur(6px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0px;
+}
+
+/* 正面 - 海报 */
+.flip-front img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 15px;
+}
+
+/* 背面 - 文字信息 */
+.flip-back {
+  transform: rotateY(180deg);
+  background: #ffb575c9(30, 30, 30, 0.9);
+  color: #2d160b;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 25px;
+  text-align: center;
+  font-size: 0.95em;
+  backdrop-filter: blur(8px);
+}
+
+.flip-back h3 {
+  margin-bottom: 10px;
+  font-size: 1.2em;
+  letter-spacing: 1px;
+}
+
+.flip-back p {
+  font-size: 0.9em;
+  line-height: 1.5;
+  margin-bottom: 15px;
+}
+
+.flip-back a {
+  color: #006d6d;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.flip-back a:hover {
+  text-decoration: underline;
+}
+
+
+/* ===== Footer ===== */
+footer {
+  background-color: #5ad0baa7;
+  backdrop-filter: blur(5px);
+  padding: 20px;
+  font-size: 0.9em;
+  color: #d9d9d9;
+}
+
+.footer-icons {
+  margin-top: 8px;
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+}
+
+.footer-icons img {
+  width: 22px;
+  height: 22px;
+  transition: transform 0.2s;
+}
+
+.footer-icons img:hover {
+  transform: scale(1.2);
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+  .album-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .flip-album {
+    width: 90%;
+    height: auto;
+  }
+
+  .flip-front img {
+    height: auto;
+  }
+
+  .streaming-links {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+#turtle-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: -990;
+}
+
+.turtle {
+  position: absolute;
+  width: 60px;
+  height: 80px;
+  transform: translate(-50%, -50%) rotate(0deg);
+  opacity: 1;
+}
+
